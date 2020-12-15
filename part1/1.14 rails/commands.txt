@@ -1,0 +1,5 @@
+# build image
+docker build -t rails . 
+
+# run container
+docker run -p 3000:3000 rails 
