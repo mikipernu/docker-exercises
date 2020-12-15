@@ -1,0 +1,9 @@
+
+
+
+
+# build container
+docker build -t logs .
+
+# run container, while binding logs.txt for host and container
+docker run -p 8000:8000 -v "$(pwd)/logs.txt:/app/logs.txt" logs
