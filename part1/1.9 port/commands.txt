@@ -1,0 +1,10 @@
+# pull image
+docker pull devopsdockeruh/ports_exercise
+
+# check image exists
+docker images
+
+# run container with -p flag
+docker run -p 8080:80 devopsdockeruh/ports_exercise
+
+# image 'browser' shows what we found on localhost:8080
