@@ -1,0 +1,19 @@
+# pull image
+docker pull devopsdockeruh/first_volume_exercise  
+
+# check that image exists
+docker images
+
+# create and save logs.txt into /logs folder on host
+nano logs/logs.txt
+
+# run image, while binding into logs/logs.txt on host
+docker run -v "$(pwd)/logs/logs.txt:/usr/app/logs.txt" devopsdockeruh/first_volume_exercise
+
+# print three first lines of logs.txt file
+head -3 logs/logs.txt 
+
+# which prints
+Tue, 15 Dec 2020 11:58:50 GMT
+Tue, 15 Dec 2020 11:58:53 GMT 
+Tue, 15 Dec 2020 11:58:56 GMT
