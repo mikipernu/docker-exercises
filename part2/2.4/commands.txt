@@ -1,1 +1,2 @@
+// scale compute
 docker-compose up --scale compute=2
