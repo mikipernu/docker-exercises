@@ -9,11 +9,11 @@ services:
         volumes:
             - ../../part1/__backend-example-docker/logs.txt:/app/logs.txt
         tty: true
-        container_name: frontend
+        container_name: backend
     frontend:
         image: frontend
         build: ../../part1/__frontend-example-docker
         ports: 
             - 5000:5000
         tty: true
-        container_name: backend
+        container_name: frontend
