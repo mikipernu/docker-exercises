@@ -1,0 +1,19 @@
+version: '3.5'
+
+services:
+    backend:
+        image: backend
+        build: ../../part1/__backend-example-docker
+        ports:
+            - 8000:8000
+        volumes:
+            - ../../part1/__backend-example-docker/logs.txt:/app/logs.txt
+        tty: true
+        container_name: frontend
+    frontend:
+        image: frontend
+        build: ../../part1/__frontend-example-docker
+        ports: 
+            - 5000:5000
+        tty: true
+        container_name: backend
