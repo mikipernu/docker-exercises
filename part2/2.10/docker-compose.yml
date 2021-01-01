@@ -1,0 +1,58 @@
+version: '3.5'
+
+services:
+    nginx:
+        image: nginx
+        ports:
+            - 80:80
+        volumes:
+            - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+        depends_on: [backend, frontend]
+    backend:
+        image: backend
+        build: ../../part1/__backend-example-docker
+        ports:
+            - 8000:8000
+        expose:
+            - "6379"
+            - "5432"
+        volumes:
+            - ../../part1/__backend-example-docker/logs.txt:/app/logs.txt
+        tty: true
+        container_name: backend
+        depends_on: [db, redis]
+        environment:
+            - REDIS=redis
+            - REDIS_PORT=6379
+            - DB_USERNAME=postgres
+            - DB_PASSWORD=example
+            - DB_NAME=postgres
+            - DB_HOST=db
+            - FRONT_URL=http://localhost
+    frontend:
+        image: frontend
+        build: ../../part1/__frontend-example-docker
+        ports: 
+            - 5000:5000
+        tty: true
+        container_name: frontend
+        environment: 
+            - API_URL=http://localhost/api
+    redis:
+        image: redis:latest
+        command: ["redis-server", "--appendonly", "yes"]
+        volumes:
+            - ./data:/data
+        hostname: redis
+        container_name: redis
+    db:
+        image: postgres:latest
+        restart: unless-stopped
+        volumes:
+            - ./database:/var/lib/postgresql/data
+        container_name: db
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=example
+            - POSTGRES_DB=postgres
+
