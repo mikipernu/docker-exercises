@@ -1,5 +1,6 @@
 FROM ubuntu:16.04
 
+WORKDIR /app
 ENV FRONT_URL http://localhost:5000
 EXPOSE 8000
 COPY . .
@@ -10,8 +11,6 @@ RUN apt-get update && apt-get install -y curl && \
     apt-get purge -y --auto-remove curl && \
     rm -rf /var/lib/apt/lists/* \
     npm install
-
-WORKDIR /app
 
 CMD ["npm", "start"]
 
