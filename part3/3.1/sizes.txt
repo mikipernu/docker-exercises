@@ -1,10 +1,24 @@
 FRONTEND
 
-before: 526 MB
-after:  282 MB
+before: 
+
+- layer size: 396.2 MB
+- image size: 526 MB
+
+after:  
+
+- layer size: 362 MB
+- image size: 493 MB
 
 
 BACKEND
 
-before: 332 MB
-after:  281 MB
+before: 
+
+- layer size: 202 MB
+- image size: 332 MB
+
+after:
+
+- layer size: 168 MB
+- image size: 299 MB

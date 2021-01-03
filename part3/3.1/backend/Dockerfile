@@ -9,13 +9,13 @@ RUN apt-get update && apt-get install -y curl && \
     curl -sL https://deb.nodesource.com/setup_10.x | bash && \
     apt install -y nodejs && \
     apt-get purge -y --auto-remove curl && \
-    rm -rf /var/lib/apt/lists/* \
+    rm -rf /var/lib/apt/lists/* && \
     npm install
 
 CMD ["npm", "start"]
 
-# size: 281 MB <---------------------------
-
+# layer size: 168 MB <---------------------------
+# image size: 299 MB
 
 ##### ##### ##### ##### ##### ##### ##### 
 #######        old version        #######
@@ -38,4 +38,5 @@ CMD ["npm", "start"]
 
 # CMD ["npm", "start"]
 
-# size: 332 MB <---------------------------
+# layer size: 202 MB <---------------------------
+# image size: 332 MB

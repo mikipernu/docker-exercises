@@ -9,14 +9,15 @@ RUN apt-get update && apt-get install -y curl && \
     curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
     apt install -y nodejs && \
     apt-get purge -y --auto-remove curl && \
-    rm -rf /var/lib/apt/lists/* \
+    rm -rf /var/lib/apt/lists/* && \
     npm install
 
 EXPOSE 5000
 
 CMD ["npm", "start"]
 
-# size: 282 MB <---------------------------
+# layer size: 362 MB <---------------------------
+# image size: 493 MB
 
 
 ##### ##### ##### ##### ##### ##### ##### 
@@ -40,4 +41,5 @@ CMD ["npm", "start"]
 
 # CMD ["npm", "start"]
 
-# old size: 526 MB <---------------------------
+# layer size: 396.2 MB <---------------------------
+# image size: 526 MB
